@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 4</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <style>
+        body {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+        h1, h2 {
+            text-align: center;
+            padding-top: 20px;
+        }
+        input {
+            justify-content:space-around;
+        }
+        button {
+            padding: 8px;
+            margin: 5px 0;
+            width: 100%;
+        }
+        .saida {
+            background-color: #eef;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .codigo-fonte {
+            background-color: #f4f4f4;
+            position: relative;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        code {
+            display: block;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Exercício 4</h1>
+
+    <h2>Crie um menu interativo no console que oferece ao usuário a escolha de três opções.
+Utilize switch-case para implementar a lógica de cada opção selecionada.</h2>
+    
+    <h2>Entradas</h2>
+    <div class="d-flex justify-content-between btn-group">
+        <input  class="btn-check" type="radio" name="radio1" id="entrada1" value="1">
+        <label class="btn btn-outline-info" for="entrada1">Opção 1</label>
+        <input  class="btn-check" type="radio" name="radio1" id="entrada2" value="2">
+        <label class="btn btn-outline-info" for="entrada2">Opção 2</label>
+        <input  class="btn-check" type="radio" name="radio1" id="entrada3" value="3">
+        <label class="btn btn-outline-info" for="entrada3">Opção 3</label>
+    </div>
+    <button class="btn btn-primary" onclick="escolhaUm()">Executar</button>
+
+    <h2>Saidas</h2>
+    <div class="saida" id="resultado">O resultado aparecerá aqui. Por favor, escolha uma das entradas.</div>
+
+    <h2>Código-Fonte</h2>
+    <div class="codigo-fonte">
+        <a class="copy-btn btn btn-primary" onclick="copiarCodigo()">Copiar</a>
+        <pre><code id="codigo">
+function escolhaUm() {
+    let e1 = document.querySelector('input[name="radio1"]:checked');
+    
+    switch (e1.value) {
+        case "1":
+            resultado.innerText = "Você escolheu a opção 1!";
+            console.log("Você escolheu a opção 1!")
+            break;
+        case "2":
+            resultado.innerText = "Você escolheu a opção 2!";
+            console.log("Você escolheu a opção 2!")
+            break;
+        case "3":
+            resultado.innerText = "Você escolheu a opção 3!";
+            console.log("Você escolheu a opção 3!")
+            break;
+    }
+}
+        </code></pre>
+    </div>
+    <h2>Utilize o console do navegador para confirmar o código.</h2>
+
+    <script>
+        function escolhaUm() {
+            let e1 = document.querySelector('input[name="radio1"]:checked');
+            
+            switch (e1.value) {
+                case "1":
+                    resultado.innerText = "Você escolheu a opção 1!";
+                    console.log("Você escolheu a opção 1!")
+                    break;
+                case "2":
+                    resultado.innerText = "Você escolheu a opção 2!";
+                    console.log("Você escolheu a opção 2!")
+                    break;
+                case "3":
+                    resultado.innerText = "Você escolheu a opção 3!";
+                    console.log("Você escolheu a opção 3!")
+                    break;
+            }
+        }
+
+        function copiarCodigo() {
+            let codigo = document.getElementById("codigo").innerText;
+            navigator.clipboard.writeText(codigo).then(() => {
+                alert("Código copiado com sucesso!");
+            }).catch(err => {
+                alert("Erro ao copiar o código: " + err);
+            });
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+  
+</body>
+</html>

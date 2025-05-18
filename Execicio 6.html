@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 6</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <style>
+        body {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+        h1, h2 {
+            text-align: center;
+            padding-top: 20px;
+        }
+        input, button {
+            padding: 8px;
+            margin: 5px 0;
+            width: 100%;
+        }
+        .saida {
+            background-color: #eef;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .codigo-fonte {
+            background-color: #f4f4f4;
+            position: relative;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        code {
+            display: block;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Exercício 6</h1>
+
+    <h2>Ler três valores para os lados de um triângulo: A, B e C. Verificar se os lados fornecidos
+formam realmente um triângulo. Caso forme, deve ser indicado o tipo de triângulo:
+Isósceles, escaleno ou eqüilátero.</h2>
+    
+    <h2>Entradas</h2>
+    <input  class="form-control" type="number" step="1" min="0" id="entrada1" placeholder="Digite o primeiro número">
+    <input  class="form-control" type="number" step="1" min="0" id="entrada2" placeholder="Digite o segundo número">
+    <input  class="form-control" type="number" step="1" min="0" id="entrada3" placeholder="Digite o terceiro número">
+    <button class="btn btn-primary" onclick="verificaTriangulo()">Executar</button>
+
+    <h2>Saidas</h2>
+    <div class="saida" id="resultado">O resultado aparecerá aqui.</div>
+
+    <h2>Código-Fonte</h2>
+    <div class="codigo-fonte">
+        <a class="copy-btn btn btn-primary" onclick="copiarCodigo()">Copiar</a>
+        <pre><code id="codigo">
+function verificaTriangulo() {
+    let lado1 = parseFloat(document.getElementById("entrada1").value);
+    let lado2 = parseFloat(document.getElementById("entrada2").value);
+    let lado3 = parseFloat(document.getElementById("entrada3").value);
+
+    if(lado1 < (lado2 + lado3) && lado2 < (lado1 + lado3) && lado3 < (lado2 + lado1)){
+        if(lado1 === lado2 && lado2 === lado3){
+            document.getElementById("resultado").innerText = "Os três lados formam um Triângulo Equilátero.";
+            console.log("Os três lados formam um Triângulo Equilátero.");
+        }else if(lado1 === lado2 || lado1 === lado3 || lado2 === lado3){
+            document.getElementById("resultado").innerText = "Os três lados formam um Triângulo Isósceles.";
+            console.log("Os três lados formam um Triângulo Isósceles.");
+        }  else{
+            document.getElementById("resultado").innerText = "Os três lados formam um Triângulo Escaleno.";
+            console.log("Os três lados formam um Triângulo Escaleno.");
+        }
+    } else {
+        document.getElementById("resultado").innerText = "Não é um triângulo.";
+        console.log("Não é um triângulo.");
+    }
+}
+        </code></pre>
+    </div>
+    <h2>Utilize o console do navegador para confirmar o código.</h2>
+
+    <script>
+        function verificaTriangulo() {
+            let lado1 = parseFloat(document.getElementById("entrada1").value);
+            let lado2 = parseFloat(document.getElementById("entrada2").value);
+            let lado3 = parseFloat(document.getElementById("entrada3").value);
+
+            if(lado1 < (lado2 + lado3) && lado2 < (lado1 + lado3) && lado3 < (lado2 + lado1)){
+                if(lado1 === lado2 && lado2 === lado3){
+                    document.getElementById("resultado").innerText = "Os três lados formam um Triângulo Equilátero.";
+                    console.log("Os três lados formam um Triângulo Equilátero.");
+                }else if(lado1 === lado2 || lado1 === lado3 || lado2 === lado3){
+                    document.getElementById("resultado").innerText = "Os três lados formam um Triângulo Isósceles.";
+                    console.log("Os três lados formam um Triângulo Isósceles.");
+                }  else{
+                    document.getElementById("resultado").innerText = "Os três lados formam um Triângulo Escaleno.";
+                    console.log("Os três lados formam um Triângulo Escaleno.");
+                }
+            } else {
+                document.getElementById("resultado").innerText = "Não é um triângulo.";
+                console.log("Não é um triângulo.");
+            }
+        }
+
+        function copiarCodigo() {
+            let codigo = document.getElementById("codigo").innerText;
+            navigator.clipboard.writeText(codigo).then(() => {
+                alert("Código copiado com sucesso!");
+            }).catch(err => {
+                alert("Erro ao copiar o código: " + err);
+            });
+        }
+    </script>
+</body>
+</html>
